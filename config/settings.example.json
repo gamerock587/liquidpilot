@@ -1,0 +1,19 @@
+{
+  "port": 7870,
+  "decision_url": "http://127.0.0.1:8081",
+  "decision_key_file": "../runtime/local-api-key.txt",
+  "model_path": "../models/d1-3B-Q4_K_M.gguf",
+  "projector_path": "../models/mmproj-d1-3B-Q8_0.gguf",
+  "llama_path": "../runtime/llama/llama-server.exe",
+  "planner_url": "",
+  "planner_model": "",
+  "planner_adapter": "openai",
+  "search_provider": "duckduckgo",
+  "searxng_url": "",
+  "private_origins": [],
+  "decision_min_probability": 0.42,
+  "headless": true,
+  "max_tabs": 3,
+  "timeout_ms": 15000,
+  "retention_days": 30
+}

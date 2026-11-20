@@ -1,0 +1,13 @@
+from pathlib import Path
+p=Path('frontend/src/App.tsx')
+s=p.read_text(encoding='utf-8')
+s=s.replace('JSON.stringify({goal,mode,workflow,seed_urls:',"JSON.stringify({goal,mode,browser_mode:browserMode,workflow:browserMode==='chrome'&&workflow==='auto'?'navigate':workflow,seed_urls:")
+s=s.replace('source_target:target,remember_public:remember,',"source_target:target,remember_public:browserMode==='chrome'?false:remember,")
+s=s.replace("disabled={busy||uploading||!status?.model_ready}","disabled={busy||uploading||!status?.model_ready||(browserMode==='chrome'&&!status?.browser?.connected)}")
+s=s.replace('Isolated browsing session',"{browserMode==='chrome'?'Your selected Chrome tab':'Separate browser session'}")
+s=s.replace("task.spec.fields&&<pre>","Object.keys(task.spec.fields||{}).length>0&&<pre>")
+s=s.replace("'Prepare fields. Approve before submission.'", "browserMode==='chrome'?'Review edits and clicks in your signed-in tab.':'Prepare fields. Approve before submission.'")
+s=s.replace('Object.keys(task.spec.fields||{}).length>0&&<pre>{JSON.stringify(task.spec.fields,null,2)}</pre>', 'task.pending_approval.action?.value&&<pre>{task.pending_approval.action.value}</pre>')
+p.write_text(s,encoding='utf-8')
+p=Path('frontend/src/style.css')
+p.write_text(p.read_text(encoding='utf-8')+'''\n.settings-row{display:flex;align-items:center;gap:10px}.chrome-connection{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:15px;border:1px solid var(--border);border-radius:12px;margin-bottom:18px;background:var(--surface)}.chrome-connection>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex:1}.chrome-connection strong{font-size:12px}.chrome-connection span{font-size:10px;opacity:.65;width:100%;padding-left:27px;overflow-wrap:anywhere}.chrome-connection button,.chrome-connection select,.connect-steps button{font:inherit;font-size:11px;padding:8px;border:1px solid var(--border);border-radius:7px;background:var(--surface);color:inherit;cursor:pointer}.connect-steps{padding-left:22px;line-height:1.8}.connect-steps li{margin:16px 0}.connect-steps pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#17251f;color:#a7efcc;padding:12px;border-radius:7px}.modal-actions span{font-size:11px;overflow-wrap:anywhere}\n''',encoding='utf-8')

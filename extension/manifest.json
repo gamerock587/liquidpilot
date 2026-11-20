@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "LiquidPilot — Local Chrome Connector",
+  "version": "1.1.0",
+  "description": "Let your local LiquidPilot agent operate a tab you explicitly select, using its existing signed-in session.",
+  "minimum_chrome_version": "118",
+  "permissions": ["debugger", "activeTab", "tabs", "storage"],
+  "host_permissions": ["http://127.0.0.1:7870/*"],
+  "background": {"service_worker": "worker.js"},
+  "action": {"default_popup": "popup.html", "default_title": "Connect this tab to LiquidPilot"}
+}

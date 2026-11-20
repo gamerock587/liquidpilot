@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="popup.css"></head><body>
+<span class="badge">LOCAL BROWSER AGENT</span><h1>LiquidPilot</h1>
+<p>Connect this tab using its existing login. Your other tabs remain outside the agent’s control.</p>
+<label for="code">Pairing code from LiquidPilot</label><input id="code" type="password" placeholder="Paste code on first connection" autocomplete="off">
+<button id="connect">Connect this tab</button><button id="disconnect" class="secondary">Disconnect / stop control</button>
+<p id="status" role="status"></p><small>Page text and screenshots go to your local model. This connector does not read stored passwords or export cookies. Approved interactions use the website’s normal session.</small>
+<script src="popup.js"></script></body></html>
